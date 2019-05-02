@@ -1,6 +1,6 @@
 ---
 title: "General Social Survey"
-author: "Your Name"
+author: "shaniqua whitehurst"
 date: "Year 2019"
 output: 
   html_document:
@@ -46,12 +46,13 @@ This data is from the 2018 General Social Survey. The first blocks of R-code has
 
 
 ## Methods
+The methods used for this was chi-square and fisher test.
 
-<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!--> The methods used for this was chi-square and fisher test. Were going to look at bar plots and compare them to see if they are different visually then look at the numerical results.
 
 ##Results
 
-<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!--> Based on the results the evidence was enought to prove the null.
 
 ### Descriptive Results
 
@@ -60,10 +61,20 @@ This data is from the 2018 General Social Survey. The first blocks of R-code has
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
+```{r}
+chisqtestGC(~BIGBANG+POSTLIFE, data=mydata4)
+
+```
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
+```{r}
+votetab=xtabs(~BIGBANG+POSTLIFE, data=mydata4)
+fisher.test(votetab)
+```
+
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
@@ -75,25 +86,38 @@ Now answer Is belief in the bigbang theory (BIGBANG) independent of belief in th
 
 ## Methods
 
-<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!--> We are goin to use the chi-square and the fishers test as the methods for this one.
 
 ##Results
 
-<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!--> 
+There was enough evidence to deny the null.
 
 ### Descriptive Results
+Big bang theory believer did not believe in after life because they have science based evidence and the people who believe in the after life believe in religion.
 
 #### Graphical Descriptive Results
+```{r}
+barchartGC(~BIGBANG+POSTLIFE, data=mydata4, type = "percent") 
+chisqtestGC(~BIGBANG+POSTLIFE, data=mydata4)
+votetab2=xtabs(~BIGBANG+POSTLIFE, data=mydata4)
+fisher.test(votetab2)
+```
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
+```{r}
+rowPerc(votetab2)
+colPerc(votetab2)
+```
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
 
-<!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+<!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!--> The people who believed in the big bang theory did not believe in after life based on their beliefs in science.
 
 # Introduction Question 3
 
@@ -103,28 +127,45 @@ This time compare the opinion on death penalty (CAPPUN) with opinion on courts (
 
 ## Methods
 
-<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->  
+For the methods were goin to run a chi-square test and fisher test.
 
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+The p-value wasnt low enought because of that there was not enough evidence to reject the null.
 
 ### Descriptive Results
 
+Based on the chart people who believed in capital punishment also felt that the death penalty wasnt harsh enough.
+
 #### Graphical Descriptive Results
+```{r}
+barchartGC(~CAPPUN+COURTS, data=mydata4, type = "percent") 
+chisqtestGC(~CAPPUN+COURTS, data=mydata4)
+votetab3=xtabs(~CAPPUN+COURTS, data=mydata4)
+fisher.test(votetab3)
+```
+
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
+```{r}
+rowPerc(votetab3)
+colPerc(votetab3)
+```
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+If you believed that the death penatly was was too harsh you were against it but if you believed in the deathe penalty your in favor of it.
 
 
 # Discussion and Conclusion
 
-<!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+<!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!--> many of the nulls were proven based on the variables being related to one another and the other nulls that were denied because they didnt have enough evidence to support the variables.
 
